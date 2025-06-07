@@ -33,137 +33,186 @@ import {
   throttle as rawThrottle,
   debounce as rawDebounce,
   retry as rawRetry,
+  
   all as rawAll,
   race as rawRace,
 } from "redux-saga/effects";
 
-/* This file is generated. Do not edit it. */
-export function* take(...args) {
-  return yield rawTake(...args);
+function* wrapEffect(effect, ...args) {
+  return yield effect(...args);
 }
 
-/* This file is generated. Do not edit it. */
-export function* takeMaybe(...args) {
-  return yield rawTakeMaybe(...args);
+export function take(...args) {
+  const effect = wrapEffect(rawTake, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* takeEvery(...args) {
-  return yield rawTakeEvery(...args);
+export function takeMaybe(...args) {
+  const effect = wrapEffect(rawTakeMaybe, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* takeLatest(...args) {
-  return yield rawTakeLatest(...args);
+export function takeEvery(...args) {
+  const effect = wrapEffect(rawTakeEvery, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* takeLeading(...args) {
-  return yield rawTakeLeading(...args);
+export function takeLatest(...args) {
+  const effect = wrapEffect(rawTakeLatest, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* put(...args) {
-  return yield rawPut(...args);
+export function takeLeading(...args) {
+  const effect = wrapEffect(rawTakeLeading, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* putResolve(...args) {
-  return yield rawPutResolve(...args);
+export function put(...args) {
+  const effect = wrapEffect(rawPut, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* call(...args) {
-  return yield rawCall(...args);
+export function putResolve(...args) {
+  const effect = wrapEffect(rawPutResolve, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* apply(...args) {
-  return yield rawApply(...args);
+export function call(...args) {
+  const effect = wrapEffect(rawCall, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* cps(...args) {
-  return yield rawCps(...args);
+export function apply(...args) {
+  const effect = wrapEffect(rawApply, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* fork(...args) {
-  return yield rawFork(...args);
+export function cps(...args) {
+  const effect = wrapEffect(rawCps, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* spawn(...args) {
-  return yield rawSpawn(...args);
+export function fork(...args) {
+  const effect = wrapEffect(rawFork, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* join(...args) {
-  return yield rawJoin(...args);
+export function spawn(...args) {
+  const effect = wrapEffect(rawSpawn, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* cancel(...args) {
-  return yield rawCancel(...args);
+export function join(...args) {
+  const effect = wrapEffect(rawJoin, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* select(...args) {
-  return yield rawSelect(...args);
+export function cancel(...args) {
+  const effect = wrapEffect(rawCancel, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* actionChannel(...args) {
-  return yield rawActionChannel(...args);
+export function select(...args) {
+  const effect = wrapEffect(rawSelect, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* flush(...args) {
-  return yield rawFlush(...args);
+export function actionChannel(...args) {
+  const effect = wrapEffect(rawActionChannel, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* cancelled(...args) {
-  return yield rawCancelled(...args);
+export function flush(...args) {
+  const effect = wrapEffect(rawFlush, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* setContext(...args) {
-  return yield rawSetContext(...args);
+export function cancelled(...args) {
+  const effect = wrapEffect(rawCancelled, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* getContext(...args) {
-  return yield rawGetContext(...args);
+export function setContext(...args) {
+  const effect = wrapEffect(rawSetContext, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* delay(...args) {
-  return yield rawDelay(...args);
+export function getContext(...args) {
+  const effect = wrapEffect(rawGetContext, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* throttle(...args) {
-  return yield rawThrottle(...args);
+export function delay(...args) {
+  const effect = wrapEffect(rawDelay, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* debounce(...args) {
-  return yield rawDebounce(...args);
+export function throttle(...args) {
+  const effect = wrapEffect(rawThrottle, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* retry(...args) {
-  return yield rawRetry(...args);
+export function debounce(...args) {
+  const effect = wrapEffect(rawDebounce, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* all(...args) {
-  return yield rawAll(...args);
+export function retry(...args) {
+  const effect = wrapEffect(rawRetry, ...args);
+  effect.isWrapped = true;
+  return effect;
 }
 
-/* This file is generated. Do not edit it. */
-export function* race(...args) {
-  return yield rawRace(...args);
+function unwrapEffect(effect) {
+  if (effect?.isWrapped) {
+    const { value } = effect.next();
+    return value;
+  }
+  return effect;
 }
 
+function unwrapEffects(effects) {
+  if (Array.isArray(effects)) {
+    return effects.map(unwrapEffect);
+  }
+  const result = {};
+  for (const [key, value] of Object.entries(effects)) {
+    result[key] = unwrapEffect(value);
+  }
+  return result;
+}
+
+export function all(effects) {
+  const effect = wrapEffect(rawAll, unwrapEffects(effects));
+  effect.isWrapped = true;
+  return effect;
+}
+
+export function race(effects) {
+  const effect = wrapEffect(rawRace, unwrapEffects(effects));
+  effect.isWrapped = true;
+  return effect;
+}
