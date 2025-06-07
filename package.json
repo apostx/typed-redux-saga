@@ -1,6 +1,6 @@
 {
-  "name": "typed-redux-saga",
-  "version": "1.5.0",
+  "name": "@apostx/typed-redux-saga",
+  "version": "1.0.0",
   "description": "Redux-Saga effects with strong types.",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/agiledigital/typed-redux-saga.git"
+    "url": "https://github.com/apostx/typed-redux-saga.git"
   },
   "bugs": {
-    "url": "https://github.com/agiledigital/typed-redux-saga/issues"
+    "url": "https://github.com/apostx/typed-redux-saga/issues"
   },
   "keywords": [
     "redux-saga",
