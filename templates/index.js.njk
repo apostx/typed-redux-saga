@@ -5,7 +5,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable prettier/prettier */
-
 {% set effects = [
   'take',
   'takeMaybe',
@@ -30,7 +29,9 @@
   'delay',
   'throttle',
   'debounce',
-  'retry',
+  'retry'
+] %}
+{% set combinatorEffects = [
   'all',
   'race'
 ] %}
@@ -38,10 +39,43 @@ import {
   {% for effect in effects %}
   {{ effect }} as raw{{ (effect.slice(0, 1) | upper) ~ effect.slice(1) }},
   {%- endfor %}
+  {% for effect in combinatorEffects %}
+  {{ effect }} as raw{{ (effect.slice(0, 1) | upper) ~ effect.slice(1) }},
+  {%- endfor %}
 } from "redux-saga/effects";
+
+function* wrapEffect(effect, ...args) {
+  return yield effect(...args);
+}
 {% for effect in effects %}
-/* This file is generated. Do not edit it. */
-export function* {{ effect }}(...args) {
-  return yield raw{{ (effect.slice(0, 1) | upper) ~ effect.slice(1) }}(...args);
+export function {{ effect }}(...args) {
+  const effect = wrapEffect(raw{{ (effect.slice(0, 1) | upper) ~ effect.slice(1) }}, ...args);
+  effect.isWrapped = true;
+  return effect;
+}
+{% endfor %}
+function unwrapEffect(effect) {
+  if (effect?.isWrapped) {
+    const { value } = effect.next();
+    return value;
+  }
+  return effect;
+}
+
+function unwrapEffects(effects) {
+  if (Array.isArray(effects)) {
+    return effects.map(unwrapEffect);
+  }
+  const result = {};
+  for (const [key, value] of Object.entries(effects)) {
+    result[key] = unwrapEffect(value);
+  }
+  return result;
+}
+{% for effect in combinatorEffects %}
+export function {{ effect }}(effects) {
+  const effect = wrapEffect(raw{{ (effect.slice(0, 1) | upper) ~ effect.slice(1) }}, unwrapEffects(effects));
+  effect.isWrapped = true;
+  return effect;
 }
 {% endfor %}
